@@ -1,0 +1,9 @@
+{
+"uuid": "alt-tab-workspace@kwalo.net",
+"name": "Alt Tab Workspace",
+"original-authors": "kwalo@kwalo.net",
+"description": "A replacement for Alt-Tab, cycles through apps on current workspace only.",
+"shell-version": [ "3.2" ],
+"url": "http://www.kwalo.net/",
+"version": 1
+}
