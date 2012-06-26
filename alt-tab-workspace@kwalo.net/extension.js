@@ -14,42 +14,17 @@ AltTabWorkspace.prototype = {
         this._getAppLists_orig = AltTab.AltTabPopup.prototype._getAppLists;
     },
 
-    // Monkey patched version of AltTabPopup._getAppLists.
-    // It's the same as original, but doesn't return windows from other
-    // workspaces.
-    _getAppLists_patched: function() {
-        let tracker = Shell.WindowTracker.get_default();
-        let appSys = Shell.AppSystem.get_default();
-        let allApps = appSys.get_running ();
-
-        let screen = global.screen;
-        let display = screen.get_display();
-        let windows = display.get_tab_list(Meta.TabList.NORMAL, screen,
-                                           screen.get_active_workspace());
-
-        // windows is only the windows on the current workspace. For
-        // each one, if it corresponds to an app we know, move that
-        // app from allApps to apps.
-        let apps = [];
-        for (let i = 0; i < windows.length && allApps.length != 0; i++) {
-            let app = tracker.get_window_app(windows[i]);
-            let index = allApps.indexOf(app);
-            if (index != -1) {
-                apps.push(app);
-                allApps.splice(index, 1);
-            }
-        }
-
-        // Now @apps is a list of apps on the current workspace, in
-        // standard Alt+Tab order (MRU except for minimized windows),
-        // and allApps is a list of apps that only appear on other
-        // workspaces, @allApps contains windows from all workspaces.
-        // We don't want that in results
-        return [apps, []];
+    // Make getAppLists function return only windows from current workspace
+    _modifiedGetAppLists : function () {
+        let getAppLists = this._getAppLists_orig;
+        return function () {
+            let [apps, allApps] = getAppLists();
+            return [apps, []];
+        };
     },
     
     enable : function () {
-        AltTab.AltTabPopup.prototype._getAppLists = this._getAppLists_patched;
+        AltTab.AltTabPopup.prototype._getAppLists = this._modifiedGetAppLists();
     },
 
     disable : function () {
