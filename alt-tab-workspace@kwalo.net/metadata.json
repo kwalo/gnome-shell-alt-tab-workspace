@@ -3,7 +3,7 @@
 "name": "Alt Tab Workspace",
 "original-authors": "kwalo@kwalo.net",
 "description": "A replacement for Alt-Tab, cycles through apps on current workspace only.",
-"shell-version": [ "3.4", "3.6" ],
+"shell-version": [ "3.8" ],
 "url": "https://github.com/kwalo/gnome-shell-alt-tab-workspace",
-"version": 5
+"version": 6
 }
