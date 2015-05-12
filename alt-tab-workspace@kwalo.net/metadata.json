@@ -4,7 +4,8 @@
   "original-authors": "kwalo@kwalo.net", 
   "shell-version": [
     "3.10",
-    "3.12"
+    "3.12",
+    "3.16"
   ], 
   "url": "https://github.com/kwalo/gnome-shell-alt-tab-workspace", 
   "uuid": "alt-tab-workspace@kwalo.net", 
