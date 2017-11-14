@@ -9,10 +9,11 @@
     "3.14.3",
     "3.16",
     "3.18",
+    "3.20.4",
     "3.22.3",
     "3.24"
   ], 
   "url": "https://github.com/kwalo/gnome-shell-alt-tab-workspace", 
   "uuid": "alt-tab-workspace@kwalo.net", 
-  "version": 10
+  "version": 11
 }
